@@ -29,7 +29,7 @@ Depois, use o Expo Go ou um simulador para abrir o app.
 ## Estrutura
 
 - `App.tsx`: shell principal do app com troca de telas por aba.
-- `src/screens/`: telas principais do fluxo inicial (`Home`, `Editor`, `Premium`, `Profile`).
+- `src/screens/`: telas principais do fluxo inicial (`Onboarding`, `Home`, `Editor`, `Premium`, `Profile`).
 - `src/components/`: peças reutilizáveis como botão, cabeçalho, títulos de seção, cards e barra inferior.
 - `src/data/`: filtros, coleções e extras visuais exibidos nas telas.
 - `src/theme/`: tokens visuais de cor e espaçamento.
@@ -38,6 +38,7 @@ Depois, use o Expo Go ou um simulador para abrir o app.
 ## MVP atual
 
 - shell com múltiplas telas e navegação base por abas;
+- onboarding inicial antes da entrada no app;
 - home conectada ao editor por estado compartilhado;
 - coleções de filtros Film, Instant e Digital;
 - editor com foto mock selecionável, troca de filtro, intensidade e comparação antes/depois;
