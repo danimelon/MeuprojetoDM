@@ -21,6 +21,7 @@ type VersoContextValue = {
   activePanel: EditorPanel;
   favoriteFilterIndexes: number[];
   savedLooks: SavedLook[];
+  proUnlocked: boolean;
   setSelectedFilterIndex: (index: number) => void;
   setSelectedStyleExtraIndex: (index: number) => void;
   setSelectedPhotoIndex: (index: number) => void;
@@ -31,6 +32,7 @@ type VersoContextValue = {
   startEditingWithPhoto: (index: number) => void;
   toggleFavoriteFilter: (index: number) => void;
   saveCurrentLook: () => void;
+  unlockProPreview: () => void;
 };
 
 const defaultValue: VersoContextValue = {
@@ -42,6 +44,7 @@ const defaultValue: VersoContextValue = {
   activePanel: 'Filtros',
   favoriteFilterIndexes: [0, 5],
   savedLooks: [],
+  proUnlocked: false,
   setSelectedFilterIndex: () => {},
   setSelectedStyleExtraIndex: () => {},
   setSelectedPhotoIndex: () => {},
@@ -52,6 +55,7 @@ const defaultValue: VersoContextValue = {
   startEditingWithPhoto: () => {},
   toggleFavoriteFilter: () => {},
   saveCurrentLook: () => {},
+  unlockProPreview: () => {},
 };
 
 const VersoContext = createContext<VersoContextValue>(defaultValue);
@@ -65,6 +69,7 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
   const [activePanel, setActivePanel] = useState<EditorPanel>('Filtros');
   const [favoriteFilterIndexes, setFavoriteFilterIndexes] = useState<number[]>([0, 5]);
   const [savedLooks, setSavedLooks] = useState<SavedLook[]>([]);
+  const [proUnlocked, setProUnlocked] = useState(false);
 
   return (
     <VersoContext.Provider
@@ -77,8 +82,9 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         activePanel,
         favoriteFilterIndexes,
         savedLooks,
+        proUnlocked,
         setSelectedFilterIndex: (index) => {
-          if (filters[index]) {
+          if (filters[index] && (!filters[index].premium || proUnlocked)) {
             setSelectedFilterIndex(index);
             setCompareMode('after');
             setActivePanel('Filtros');
@@ -99,7 +105,7 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         setCompareMode,
         setActivePanel,
         startEditingWithFilter: (index) => {
-          if (filters[index]) {
+          if (filters[index] && (!filters[index].premium || proUnlocked)) {
             setSelectedFilterIndex(index);
             setCompareMode('after');
             setActivePanel('Filtros');
@@ -139,6 +145,9 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
             },
             ...savedLooks,
           ]);
+        },
+        unlockProPreview: () => {
+          setProUnlocked(true);
         },
       }}
     >

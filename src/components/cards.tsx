@@ -15,6 +15,11 @@ export function FilterCard({ filter }: { filter: Filter; key?: string }) {
   return (
     <View style={styles.filterCard}>
       <View style={[styles.filterSwatch, { backgroundColor: filter.swatch }]} />
+      {filter.premium && (
+        <View style={styles.premiumBadge}>
+          <Text style={styles.premiumBadgeText}>PRO</Text>
+        </View>
+      )}
       <Text style={styles.filterName}>{filter.name}</Text>
       <Text style={styles.filterMeta}>{filter.family}</Text>
       <Text style={styles.filterDescription}>{filter.description}</Text>
@@ -67,6 +72,19 @@ const styles = StyleSheet.create({
   filterSwatch: {
     height: 112,
     borderRadius: radii.md,
+  },
+  premiumBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.accentMuted,
+    borderRadius: radii.round,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 6,
+  },
+  premiumBadgeText: {
+    color: colors.accent,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.6,
   },
   filterName: {
     color: colors.text,

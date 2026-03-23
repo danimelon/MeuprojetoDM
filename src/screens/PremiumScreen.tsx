@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { ScreenHeader } from '../components/ScreenHeader';
+import { useVersoEditor } from '../state/VersoContext';
 import { colors, radii, spacing } from '../theme/tokens';
 
 const benefits = [
@@ -11,6 +12,8 @@ const benefits = [
 ];
 
 export function PremiumScreen() {
+  const { proUnlocked, unlockProPreview } = useVersoEditor();
+
   return (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <ScreenHeader title="Premium" subtitle="o universo completo do Verso" badge="PR" />
@@ -22,7 +25,11 @@ export function PremiumScreen() {
           O foco principal continua sendo filtros fortes e uma experiência elegante. Os extras
           visuais entram só como detalhe final.
         </Text>
-        <PrimaryButton label="Assinar mensalmente" variant="light" />
+        <PrimaryButton
+          label={proUnlocked ? 'Preview premium liberado' : 'Desbloquear preview premium'}
+          onPress={unlockProPreview}
+          variant="light"
+        />
       </View>
 
       <View style={styles.listCard}>
@@ -32,6 +39,15 @@ export function PremiumScreen() {
             <Text style={styles.benefitText}>{benefit}</Text>
           </View>
         ))}
+      </View>
+
+      <View style={styles.statusCard}>
+        <Text style={styles.statusTitle}>Status atual</Text>
+        <Text style={styles.statusCopy}>
+          {proUnlocked
+            ? 'Os filtros premium já estão liberados nesta prévia do app.'
+            : 'Os filtros premium continuam bloqueados e direcionam para esta tela.'}
+        </Text>
       </View>
     </ScrollView>
   );
@@ -97,5 +113,23 @@ const styles = StyleSheet.create({
     color: colors.text,
     lineHeight: 24,
     fontSize: 15,
+  },
+  statusCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radii.xl,
+    padding: spacing.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    gap: spacing.sm,
+  },
+  statusTitle: {
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  statusCopy: {
+    color: colors.mutedText,
+    fontSize: 14,
+    lineHeight: 22,
   },
 });

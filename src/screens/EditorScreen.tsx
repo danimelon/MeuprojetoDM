@@ -10,7 +10,11 @@ import { colors, radii, spacing } from '../theme/tokens';
 
 const intensityPresets = [25, 50, 75, 100];
 
-export function EditorScreen() {
+type EditorScreenProps = {
+  onOpenPremium: () => void;
+};
+
+export function EditorScreen({ onOpenPremium }: EditorScreenProps) {
   const {
     selectedFilterIndex,
     setSelectedFilterIndex,
@@ -28,6 +32,7 @@ export function EditorScreen() {
     toggleFavoriteFilter,
     savedLooks,
     saveCurrentLook,
+    proUnlocked,
   } = useVersoEditor();
 
   const selectedFilter = filters[selectedFilterIndex];
@@ -135,7 +140,14 @@ export function EditorScreen() {
             <TouchableOpacity
               key={filter.name}
               activeOpacity={0.85}
-              onPress={() => setSelectedFilterIndex(index)}
+              onPress={() => {
+                if (filter.premium && !proUnlocked) {
+                  onOpenPremium();
+                  return;
+                }
+
+                setSelectedFilterIndex(index);
+              }}
               style={[styles.chip, index === selectedFilterIndex && styles.chipActive]}
             >
               <Text style={[styles.chipText, index === selectedFilterIndex && styles.chipTextActive]}>
@@ -222,6 +234,9 @@ export function EditorScreen() {
         <View style={styles.helperActions}>
           <PrimaryButton label="Salvar look" onPress={saveCurrentLook} />
           <Text style={styles.savedLooksText}>{savedLooks.length} look(s) salvo(s)</Text>
+          {!proUnlocked && (
+            <Text style={styles.lockedNote}>Alguns filtros estão bloqueados e levam você para o Premium.</Text>
+          )}
         </View>
       </View>
     </ScrollView>
@@ -580,5 +595,10 @@ const styles = StyleSheet.create({
     color: colors.accent,
     fontSize: 13,
     fontWeight: '600',
+  },
+  lockedNote: {
+    color: colors.mutedText,
+    fontSize: 12,
+    lineHeight: 18,
   },
 });

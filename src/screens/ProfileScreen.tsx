@@ -20,6 +20,7 @@ export function ProfileScreen() {
     intensity,
     favoriteFilterIndexes,
     savedLooks,
+    proUnlocked,
   } = useVersoEditor();
   const currentFilter = filters[selectedFilterIndex];
   const currentStyleExtra = styleExtras[selectedStyleExtraIndex];
@@ -48,6 +49,7 @@ export function ProfileScreen() {
         <Text style={styles.sessionTitle}>Biblioteca pessoal</Text>
         <Text style={styles.sessionCopy}>Filtros favoritos: {favoriteFilterIndexes.length}</Text>
         <Text style={styles.sessionCopy}>Looks salvos: {savedLooks.length}</Text>
+        <Text style={styles.sessionCopy}>Premium: {proUnlocked ? 'ativo na prévia' : 'bloqueado'}</Text>
         {savedLooks.slice(0, 2).map((look) => (
           <Text key={look.id} style={styles.sessionCopy}>
             {look.photoName} · {look.filterName} · {look.intensity}%

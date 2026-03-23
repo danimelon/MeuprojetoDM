@@ -15,14 +15,14 @@ export default function App() {
   const content = useMemo(() => {
     switch (activeTab) {
       case 'edit':
-        return <EditorScreen />;
+        return <EditorScreen onOpenPremium={() => setActiveTab('premium')} />;
       case 'premium':
         return <PremiumScreen />;
       case 'profile':
         return <ProfileScreen />;
       case 'home':
       default:
-        return <HomeScreen onStartEditing={() => setActiveTab('edit')} />;
+        return <HomeScreen onStartEditing={() => setActiveTab('edit')} onOpenPremium={() => setActiveTab('premium')} />;
     }
   }, [activeTab]);
 

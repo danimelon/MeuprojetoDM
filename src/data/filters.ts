@@ -3,6 +3,7 @@ export type Filter = {
   family: 'Film' | 'Instant' | 'Digital';
   description: string;
   swatch: string;
+  premium?: boolean;
 };
 
 export type Collection = {
@@ -49,6 +50,7 @@ export const filters: Filter[] = [
     family: 'Film',
     description: 'An elegant lens-inspired editorial finish.',
     swatch: '#8A8075',
+    premium: true,
   },
   {
     name: 'Sunday 35',
@@ -67,6 +69,7 @@ export const filters: Filter[] = [
     family: 'Instant',
     description: 'Clean instant light with cool paper tones.',
     swatch: '#9CB0CC',
+    premium: true,
   },
   {
     name: 'Soft Print',
@@ -85,6 +88,7 @@ export const filters: Filter[] = [
     family: 'Digital',
     description: 'Flash-forward digital nostalgia.',
     swatch: '#7FA2D0',
+    premium: true,
   },
   {
     name: 'Digi Bloom',
@@ -103,6 +107,7 @@ export const filters: Filter[] = [
     family: 'Digital',
     description: 'Clean creator light with polished glow.',
     swatch: '#E5C7AD',
+    premium: true,
   },
 ];
 

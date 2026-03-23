@@ -10,10 +10,11 @@ import { colors, radii, spacing } from '../theme/tokens';
 
 type HomeScreenProps = {
   onStartEditing: () => void;
+  onOpenPremium: () => void;
 };
 
-export function HomeScreen({ onStartEditing }: HomeScreenProps) {
-  const { favoriteFilterIndexes, startEditingWithFilter, startEditingWithPhoto } = useVersoEditor();
+export function HomeScreen({ onStartEditing, onOpenPremium }: HomeScreenProps) {
+  const { favoriteFilterIndexes, proUnlocked, startEditingWithFilter, startEditingWithPhoto } = useVersoEditor();
   const favoriteFilters = favoriteFilterIndexes.map((index) => filters[index]).filter(Boolean);
 
   return (
@@ -68,6 +69,10 @@ export function HomeScreen({ onStartEditing }: HomeScreenProps) {
               key={filter.name}
               activeOpacity={0.85}
               onPress={() => {
+                if (filter.premium && !proUnlocked) {
+                  onOpenPremium();
+                  return;
+                }
                 startEditingWithFilter(filterIndex);
                 onStartEditing();
               }}
@@ -88,6 +93,10 @@ export function HomeScreen({ onStartEditing }: HomeScreenProps) {
               key={filter.name}
               activeOpacity={0.85}
               onPress={() => {
+                if (filter.premium && !proUnlocked) {
+                  onOpenPremium();
+                  return;
+                }
                 startEditingWithFilter(filterIndex);
                 onStartEditing();
               }}
