@@ -42,6 +42,7 @@ Depois, use o Expo Go ou um simulador para abrir o app.
 - coleções de filtros Film, Instant e Digital;
 - editor com foto mock selecionável, troca de filtro, intensidade e comparação antes/depois;
 - sessão compartilhada entre Home, Editor e Perfil para manter foto/filtro escolhidos;
+- fluxo inicial de favoritos e looks salvos dentro do estado compartilhado;
 - extras visuais opcionais para finalizar a imagem;
 - base mais preparada para evoluir para imagem real e exportação além de um único `App.tsx`.
 

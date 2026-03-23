@@ -13,7 +13,14 @@ const items = [
 ];
 
 export function ProfileScreen() {
-  const { selectedFilterIndex, selectedStyleExtraIndex, selectedPhotoIndex, intensity } = useVersoEditor();
+  const {
+    selectedFilterIndex,
+    selectedStyleExtraIndex,
+    selectedPhotoIndex,
+    intensity,
+    favoriteFilterIndexes,
+    savedLooks,
+  } = useVersoEditor();
   const currentFilter = filters[selectedFilterIndex];
   const currentStyleExtra = styleExtras[selectedStyleExtraIndex];
   const currentPhoto = mockPhotos[selectedPhotoIndex];
@@ -35,6 +42,17 @@ export function ProfileScreen() {
         <Text style={styles.sessionCopy}>Filtro: {currentFilter.name}</Text>
         <Text style={styles.sessionCopy}>Toque extra: {currentStyleExtra.name}</Text>
         <Text style={styles.sessionCopy}>Intensidade: {intensity}%</Text>
+      </View>
+
+      <View style={styles.sessionCard}>
+        <Text style={styles.sessionTitle}>Biblioteca pessoal</Text>
+        <Text style={styles.sessionCopy}>Filtros favoritos: {favoriteFilterIndexes.length}</Text>
+        <Text style={styles.sessionCopy}>Looks salvos: {savedLooks.length}</Text>
+        {savedLooks.slice(0, 2).map((look) => (
+          <Text key={look.id} style={styles.sessionCopy}>
+            {look.photoName} · {look.filterName} · {look.intensity}%
+          </Text>
+        ))}
       </View>
 
       <View style={styles.listCard}>

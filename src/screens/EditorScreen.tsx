@@ -24,11 +24,16 @@ export function EditorScreen() {
     setCompareMode,
     activePanel,
     setActivePanel,
+    favoriteFilterIndexes,
+    toggleFavoriteFilter,
+    savedLooks,
+    saveCurrentLook,
   } = useVersoEditor();
 
   const selectedFilter = filters[selectedFilterIndex];
   const selectedStyleExtra = styleExtras[selectedStyleExtraIndex];
   const selectedPhoto = mockPhotos[selectedPhotoIndex];
+  const isFavoriteFilter = favoriteFilterIndexes.includes(selectedFilterIndex);
 
   const previewPalette = useMemo(() => {
     const base = compareMode === 'before' ? selectedPhoto.background : selectedFilter.swatch;
@@ -90,6 +95,15 @@ export function EditorScreen() {
               <Text style={styles.selectedFilterName}>{selectedFilter.name}</Text>
               <Text style={styles.selectedFilterCopy}>{selectedFilter.description}</Text>
             </View>
+            <TouchableOpacity
+              activeOpacity={0.85}
+              onPress={() => toggleFavoriteFilter(selectedFilterIndex)}
+              style={[styles.favoriteButton, isFavoriteFilter && styles.favoriteButtonActive]}
+            >
+              <Text style={[styles.favoriteButtonText, isFavoriteFilter && styles.favoriteButtonTextActive]}>
+                {isFavoriteFilter ? 'Favorito' : 'Salvar'}
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -205,7 +219,10 @@ export function EditorScreen() {
           Agora o editor já tem foto mock selecionável, troca de filtro, intensidade e comparação
           antes/depois. O próximo salto é conectar imagem real e exportação.
         </Text>
-        <PrimaryButton label="Próximo: imagem real" />
+        <View style={styles.helperActions}>
+          <PrimaryButton label="Salvar look" onPress={saveCurrentLook} />
+          <Text style={styles.savedLooksText}>{savedLooks.length} look(s) salvo(s)</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -355,6 +372,23 @@ const styles = StyleSheet.create({
   selectedFilterInfo: {
     flex: 1,
     gap: 4,
+  },
+  favoriteButton: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: 10,
+    borderRadius: radii.round,
+    backgroundColor: colors.surface,
+  },
+  favoriteButtonActive: {
+    backgroundColor: colors.accent,
+  },
+  favoriteButtonText: {
+    color: colors.text,
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  favoriteButtonTextActive: {
+    color: colors.onAccent,
   },
   selectedFilterName: {
     color: colors.text,
@@ -538,5 +572,13 @@ const styles = StyleSheet.create({
     color: colors.mutedText,
     fontSize: 15,
     lineHeight: 24,
+  },
+  helperActions: {
+    gap: spacing.sm,
+  },
+  savedLooksText: {
+    color: colors.accent,
+    fontSize: 13,
+    fontWeight: '600',
   },
 });

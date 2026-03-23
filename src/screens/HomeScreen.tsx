@@ -13,7 +13,8 @@ type HomeScreenProps = {
 };
 
 export function HomeScreen({ onStartEditing }: HomeScreenProps) {
-  const { startEditingWithFilter, startEditingWithPhoto } = useVersoEditor();
+  const { favoriteFilterIndexes, startEditingWithFilter, startEditingWithPhoto } = useVersoEditor();
+  const favoriteFilters = favoriteFilterIndexes.map((index) => filters[index]).filter(Boolean);
 
   return (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -60,6 +61,26 @@ export function HomeScreen({ onStartEditing }: HomeScreenProps) {
       <SectionTitle title="Filtros em destaque" action="explorar" />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>
         {highlightedFilters.map((filter) => {
+          const filterIndex = indexOfFilter(filter.name);
+
+          return (
+            <TouchableOpacity
+              key={filter.name}
+              activeOpacity={0.85}
+              onPress={() => {
+                startEditingWithFilter(filterIndex);
+                onStartEditing();
+              }}
+            >
+              <FilterCard filter={filter} />
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+
+      <SectionTitle title="Favoritos rápidos" action={`${favoriteFilters.length} salvos`} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>
+        {favoriteFilters.map((filter) => {
           const filterIndex = indexOfFilter(filter.name);
 
           return (
