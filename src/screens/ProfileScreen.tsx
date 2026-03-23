@@ -1,5 +1,8 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { ScreenHeader } from '../components/ScreenHeader';
+import { filters, styleExtras } from '../data/filters';
+import { mockPhotos } from '../data/mockPhotos';
+import { useVersoEditor } from '../state/VersoContext';
 import { colors, radii, spacing } from '../theme/tokens';
 
 const items = [
@@ -10,6 +13,11 @@ const items = [
 ];
 
 export function ProfileScreen() {
+  const { selectedFilterIndex, selectedStyleExtraIndex, selectedPhotoIndex, intensity } = useVersoEditor();
+  const currentFilter = filters[selectedFilterIndex];
+  const currentStyleExtra = styleExtras[selectedStyleExtraIndex];
+  const currentPhoto = mockPhotos[selectedPhotoIndex];
+
   return (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <ScreenHeader title="Perfil" subtitle="seu espaço dentro do Verso" badge="PF" />
@@ -19,6 +27,14 @@ export function ProfileScreen() {
         <Text style={styles.copy}>
           Área preparada para histórico, assinatura, preferências e organização futura da conta.
         </Text>
+      </View>
+
+      <View style={styles.sessionCard}>
+        <Text style={styles.sessionTitle}>Sessão atual</Text>
+        <Text style={styles.sessionCopy}>Foto: {currentPhoto.name}</Text>
+        <Text style={styles.sessionCopy}>Filtro: {currentFilter.name}</Text>
+        <Text style={styles.sessionCopy}>Toque extra: {currentStyleExtra.name}</Text>
+        <Text style={styles.sessionCopy}>Intensidade: {intensity}%</Text>
       </View>
 
       <View style={styles.listCard}>
@@ -64,6 +80,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     overflow: 'hidden',
+  },
+  sessionCard: {
+    backgroundColor: colors.card,
+    borderRadius: radii.xl,
+    padding: spacing.lg,
+    gap: 6,
+  },
+  sessionTitle: {
+    color: colors.text,
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 6,
+  },
+  sessionCopy: {
+    color: colors.mutedText,
+    fontSize: 14,
+    lineHeight: 20,
   },
   row: {
     flexDirection: 'row',

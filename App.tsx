@@ -6,6 +6,7 @@ import { EditorScreen } from './src/screens/EditorScreen';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { PremiumScreen } from './src/screens/PremiumScreen';
 import { ProfileScreen } from './src/screens/ProfileScreen';
+import { VersoProvider } from './src/state/VersoContext';
 import { colors } from './src/theme/tokens';
 
 export default function App() {
@@ -26,13 +27,15 @@ export default function App() {
   }, [activeTab]);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="dark" />
-      <View style={styles.appShell}>
-        <View style={styles.content}>{content}</View>
-        <BottomTabBar activeTab={activeTab} onChange={setActiveTab} />
-      </View>
-    </SafeAreaView>
+    <VersoProvider>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar style="dark" />
+        <View style={styles.appShell}>
+          <View style={styles.content}>{content}</View>
+          <BottomTabBar activeTab={activeTab} onChange={setActiveTab} />
+        </View>
+      </SafeAreaView>
+    </VersoProvider>
   );
 }
 

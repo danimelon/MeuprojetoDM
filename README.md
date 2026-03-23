@@ -38,9 +38,10 @@ Depois, use o Expo Go ou um simulador para abrir o app.
 ## MVP atual
 
 - shell com múltiplas telas e navegação base por abas;
-- home separada do editor, premium e perfil;
+- home conectada ao editor por estado compartilhado;
 - coleções de filtros Film, Instant e Digital;
 - editor com foto mock selecionável, troca de filtro, intensidade e comparação antes/depois;
+- sessão compartilhada entre Home, Editor e Perfil para manter foto/filtro escolhidos;
 - extras visuais opcionais para finalizar a imagem;
 - base mais preparada para evoluir para imagem real e exportação além de um único `App.tsx`.
 

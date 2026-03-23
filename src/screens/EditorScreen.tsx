@@ -1,21 +1,30 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { ScreenHeader } from '../components/ScreenHeader';
 import { SectionTitle } from '../components/SectionTitle';
 import { filters, styleExtras } from '../data/filters';
 import { mockPhotos } from '../data/mockPhotos';
+import { useVersoEditor } from '../state/VersoContext';
 import { colors, radii, spacing } from '../theme/tokens';
 
 const intensityPresets = [25, 50, 75, 100];
 
 export function EditorScreen() {
-  const [selectedFilterIndex, setSelectedFilterIndex] = useState(0);
-  const [selectedStyleExtraIndex, setSelectedStyleExtraIndex] = useState(styleExtras.length - 1);
-  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
-  const [intensity, setIntensity] = useState(75);
-  const [compareMode, setCompareMode] = useState<'after' | 'before'>('after');
-  const [activeTab, setActiveTab] = useState<'Filtros' | 'Estilo' | 'Ajustes' | 'Comparar'>('Filtros');
+  const {
+    selectedFilterIndex,
+    setSelectedFilterIndex,
+    selectedStyleExtraIndex,
+    setSelectedStyleExtraIndex,
+    selectedPhotoIndex,
+    setSelectedPhotoIndex,
+    intensity,
+    setIntensity,
+    compareMode,
+    setCompareMode,
+    activePanel,
+    setActivePanel,
+  } = useVersoEditor();
 
   const selectedFilter = filters[selectedFilterIndex];
   const selectedStyleExtra = styleExtras[selectedStyleExtraIndex];
@@ -127,15 +136,15 @@ export function EditorScreen() {
             <TouchableOpacity
               key={tab}
               activeOpacity={0.85}
-              onPress={() => setActiveTab(tab)}
-              style={[styles.tab, activeTab === tab && styles.tabActive]}
+              onPress={() => setActivePanel(tab)}
+              style={[styles.tab, activePanel === tab && styles.tabActive]}
             >
-              <Text style={[styles.tabText, activeTab === tab && styles.tabTextActive]}>{tab}</Text>
+              <Text style={[styles.tabText, activePanel === tab && styles.tabTextActive]}>{tab}</Text>
             </TouchableOpacity>
           ))}
         </View>
 
-        {activeTab === 'Estilo' && (
+        {activePanel === 'Estilo' && (
           <View style={styles.activePanel}>
             <Text style={styles.panelTitle}>Toques finais</Text>
             <View style={styles.styleExtraRow}>
@@ -160,7 +169,7 @@ export function EditorScreen() {
           </View>
         )}
 
-        {activeTab === 'Ajustes' && (
+        {activePanel === 'Ajustes' && (
           <View style={styles.activePanel}>
             <Text style={styles.panelTitle}>Ajustes rápidos</Text>
             <Text style={styles.panelCopy}>
@@ -169,7 +178,7 @@ export function EditorScreen() {
           </View>
         )}
 
-        {activeTab === 'Comparar' && (
+        {activePanel === 'Comparar' && (
           <View style={styles.activePanel}>
             <Text style={styles.panelTitle}>Antes / depois</Text>
             <View style={styles.compareRow}>

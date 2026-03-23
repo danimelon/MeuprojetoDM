@@ -1,4 +1,9 @@
 declare module 'react' {
+  export type Context<T> = {
+    Provider: (props: { value: T; children?: JSX.Element }) => JSX.Element;
+  };
+  export function createContext<T>(defaultValue: T): Context<T>;
+  export function useContext<T>(context: Context<T>): T;
   export function useMemo<T>(factory: () => T, deps: unknown[]): T;
   export function useState<T>(initialState: T): [T, (value: T) => void];
 }
