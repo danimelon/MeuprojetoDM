@@ -1,0 +1,133 @@
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" fill="#F6F1EA"/>
+  <text x="90" y="90" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Verso — visual preview</text>
+  <text x="90" y="130" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="22">Home, Editor, Premium e Perfil em um mockup estático com azul cobalto como destaque.</text>
+
+  <g transform="translate(90 190)">
+    <rect x="0" y="0" width="300" height="720" rx="42" fill="#FFFCF8" stroke="#E6DDD3" stroke-width="3"/>
+    <text x="28" y="54" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Verso</text>
+    <text x="28" y="80" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="14">poesia visual para o cotidiano</text>
+    <circle cx="252" cy="52" r="18" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <text x="244" y="57" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">VS</text>
+
+    <rect x="22" y="110" width="256" height="172" rx="26" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <text x="42" y="138" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">VERSO STUDIO</text>
+    <text x="42" y="182" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Transforme</text>
+    <text x="42" y="214" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">o cotidiano</text>
+    <text x="42" y="246" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">em arte.</text>
+    <rect x="42" y="252" width="146" height="34" rx="17" fill="#0047AB"/>
+    <text x="62" y="274" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Editar uma foto</text>
+
+    <text x="22" y="330" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Coleções</text>
+    <rect x="22" y="350" width="120" height="110" rx="22" fill="#F4EEE7" stroke="#E6DDD3"/>
+    <rect x="158" y="350" width="120" height="110" rx="22" fill="#F4EEE7" stroke="#E6DDD3"/>
+    <text x="38" y="382" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Film</text>
+    <text x="38" y="410" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="12">Kodak e</text>
+    <text x="38" y="426" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="12">35mm</text>
+    <text x="174" y="382" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Instant</text>
+    <text x="174" y="410" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="12">Instax e</text>
+    <text x="174" y="426" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="12">memória</text>
+
+    <text x="22" y="500" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Filtros em destaque</text>
+    <rect x="22" y="520" width="110" height="132" rx="20" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <rect x="36" y="534" width="82" height="68" rx="14" fill="#B8895E"/>
+    <text x="36" y="624" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Golden Roll</text>
+    <text x="36" y="644" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">FILM</text>
+
+    <rect x="146" y="520" width="110" height="132" rx="20" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <rect x="160" y="534" width="82" height="68" rx="14" fill="#9CB0CC"/>
+    <text x="160" y="624" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Blue Paper</text>
+    <text x="160" y="644" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">INSTANT</text>
+
+    <rect x="22" y="680" width="256" height="18" rx="9" fill="#F4EEE7"/>
+    <circle cx="56" cy="689" r="8" fill="#0047AB"/>
+    <circle cx="126" cy="689" r="8" fill="#D9D0C7"/>
+    <circle cx="196" cy="689" r="8" fill="#D9D0C7"/>
+    <circle cx="246" cy="689" r="8" fill="#D9D0C7"/>
+  </g>
+
+  <g transform="translate(470 190)">
+    <rect x="0" y="0" width="300" height="720" rx="42" fill="#FFFCF8" stroke="#E6DDD3" stroke-width="3"/>
+    <text x="28" y="54" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Editor</text>
+    <text x="28" y="80" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="14">edite com atmosfera e leveza</text>
+    <text x="226" y="54" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">Exportar</text>
+
+    <rect x="22" y="110" width="256" height="530" rx="30" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <rect x="38" y="132" width="224" height="250" rx="22" fill="#F7F1EA"/>
+    <rect x="52" y="146" width="196" height="222" rx="18" fill="#B49476"/>
+    <circle cx="210" cy="208" r="58" fill="#E9D4B5"/>
+    <circle cx="108" cy="330" r="36" fill="#DCE7F9" stroke="#0047AB" stroke-width="4"/>
+    <rect x="172" y="340" width="74" height="26" rx="13" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <text x="194" y="357" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700">Verse</text>
+
+    <text x="38" y="414" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Filtro selecionado</text>
+    <rect x="38" y="430" width="210" height="64" rx="18" fill="#F4EEE7"/>
+    <rect x="50" y="442" width="40" height="40" rx="12" fill="#B8895E"/>
+    <text x="104" y="460" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Golden Roll</text>
+    <text x="104" y="480" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="12">Warm golden film</text>
+
+    <text x="38" y="526" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Intensidade</text>
+    <rect x="38" y="542" width="190" height="6" rx="3" fill="#D9D0C7"/>
+    <rect x="38" y="542" width="126" height="6" rx="3" fill="#0047AB"/>
+    <circle cx="164" cy="545" r="10" fill="#FFFFFF" stroke="#0047AB" stroke-width="3"/>
+
+    <rect x="38" y="574" width="84" height="32" rx="16" fill="#0047AB"/>
+    <text x="54" y="594" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">Golden Roll</text>
+    <rect x="132" y="574" width="78" height="32" rx="16" fill="#F4EEE7"/>
+    <text x="148" y="594" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="12">Quiet Lens</text>
+
+    <rect x="22" y="662" width="256" height="18" rx="9" fill="#F4EEE7"/>
+    <circle cx="92" cy="671" r="8" fill="#D9D0C7"/>
+    <circle cx="146" cy="671" r="8" fill="#0047AB"/>
+    <circle cx="200" cy="671" r="8" fill="#D9D0C7"/>
+    <circle cx="240" cy="671" r="8" fill="#D9D0C7"/>
+  </g>
+
+  <g transform="translate(850 190)">
+    <rect x="0" y="0" width="300" height="720" rx="42" fill="#FFFCF8" stroke="#E6DDD3" stroke-width="3"/>
+    <text x="28" y="54" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Premium</text>
+    <text x="28" y="80" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="14">o universo completo do Verso</text>
+
+    <rect x="22" y="112" width="256" height="244" rx="28" fill="#0047AB"/>
+    <rect x="40" y="132" width="114" height="28" rx="14" fill="#DCE7F9"/>
+    <text x="58" y="151" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">VERSO STUDIO</text>
+    <text x="40" y="198" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Assinatura pensada</text>
+    <text x="40" y="228" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">para crescer com</text>
+    <text x="40" y="258" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">o produto.</text>
+    <rect x="40" y="284" width="170" height="36" rx="18" fill="#FFFFFF"/>
+    <text x="65" y="307" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">Assinar mensalmente</text>
+
+    <rect x="22" y="388" width="256" height="252" rx="28" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <circle cx="48" cy="426" r="6" fill="#0047AB"/>
+    <text x="64" y="431" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14">Todos os filtros da biblioteca.</text>
+    <circle cx="48" cy="472" r="6" fill="#0047AB"/>
+    <text x="64" y="477" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14">Coleções mensais e novas curadorias.</text>
+    <circle cx="48" cy="518" r="6" fill="#0047AB"/>
+    <text x="64" y="523" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14">Extras visuais opcionais.</text>
+    <circle cx="48" cy="564" r="6" fill="#0047AB"/>
+    <text x="64" y="569" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="14">Base pronta para retenção.</text>
+  </g>
+
+  <g transform="translate(1230 190)">
+    <rect x="0" y="0" width="280" height="720" rx="42" fill="#FFFCF8" stroke="#E6DDD3" stroke-width="3"/>
+    <text x="28" y="54" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">Perfil</text>
+    <text x="28" y="80" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="14">seu espaço dentro do Verso</text>
+
+    <rect x="22" y="112" width="236" height="126" rx="24" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <text x="40" y="156" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Verso Member</text>
+    <text x="40" y="186" fill="#6E655D" font-family="Arial, Helvetica, sans-serif" font-size="13">histórico, assinatura e preferências</text>
+
+    <rect x="22" y="268" width="236" height="250" rx="24" fill="#FFFFFF" stroke="#E6DDD3"/>
+    <text x="40" y="314" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="15">Coleções salvas</text>
+    <text x="230" y="314" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="20">›</text>
+    <line x1="40" y1="332" x2="240" y2="332" stroke="#E6DDD3"/>
+    <text x="40" y="370" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="15">Assinatura</text>
+    <text x="230" y="370" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="20">›</text>
+    <line x1="40" y1="388" x2="240" y2="388" stroke="#E6DDD3"/>
+    <text x="40" y="426" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="15">Preferências visuais</text>
+    <text x="230" y="426" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="20">›</text>
+    <line x1="40" y1="444" x2="240" y2="444" stroke="#E6DDD3"/>
+    <text x="40" y="482" fill="#1F1B17" font-family="Arial, Helvetica, sans-serif" font-size="15">Ajuda e suporte</text>
+    <text x="230" y="482" fill="#0047AB" font-family="Arial, Helvetica, sans-serif" font-size="20">›</text>
+  </g>
+</svg>
