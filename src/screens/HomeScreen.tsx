@@ -14,7 +14,14 @@ type HomeScreenProps = {
 };
 
 export function HomeScreen({ onStartEditing, onOpenPremium }: HomeScreenProps) {
-  const { favoriteFilterIndexes, proUnlocked, startEditingWithFilter, startEditingWithPhoto } = useVersoEditor();
+  const {
+    favoriteFilterIndexes,
+    importRealPhoto,
+    importedPhotoName,
+    proUnlocked,
+    startEditingWithFilter,
+    startEditingWithPhoto,
+  } = useVersoEditor();
   const favoriteFilters = favoriteFilterIndexes.map((index) => filters[index]).filter(Boolean);
 
   return (
@@ -28,7 +35,17 @@ export function HomeScreen({ onStartEditing, onOpenPremium }: HomeScreenProps) {
           Filtros inspirados em câmeras icônicas e um fluxo de edição pensado para criar imagens
           com atmosfera, de forma simples e sofisticada.
         </Text>
-        <PrimaryButton label="Editar uma foto" onPress={onStartEditing} />
+        <View style={styles.heroActions}>
+          <PrimaryButton label="Editar uma foto" onPress={onStartEditing} />
+          <PrimaryButton
+            label={importedPhotoName ? 'Trocar foto real' : 'Importar foto real'}
+            onPress={async () => {
+              await importRealPhoto();
+              onStartEditing();
+            }}
+            variant="light"
+          />
+        </View>
       </View>
 
       <SectionTitle title="Comece por uma cena" action="mock gallery" />
@@ -149,6 +166,10 @@ const styles = StyleSheet.create({
     color: colors.mutedText,
     lineHeight: 24,
     fontSize: 15,
+  },
+  heroActions: {
+    gap: spacing.sm,
+    alignItems: 'flex-start',
   },
   photoStartCard: {
     width: 170,

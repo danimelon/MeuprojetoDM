@@ -41,6 +41,7 @@ Depois, use o Expo Go ou um simulador para abrir o app.
 - onboarding inicial antes da entrada no app;
 - home conectada ao editor por estado compartilhado;
 - coleções de filtros Film, Instant e Digital;
+- importação de imagem real via Expo Image Picker conectada ao estado compartilhado;
 - editor com foto mock selecionável, troca de filtro, intensidade e comparação antes/depois;
 - sessão compartilhada entre Home, Editor e Perfil para manter foto/filtro escolhidos;
 - fluxo inicial de favoritos e looks salvos dentro do estado compartilhado;

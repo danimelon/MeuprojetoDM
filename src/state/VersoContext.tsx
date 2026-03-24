@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 import { filters, styleExtras } from '../data/filters';
 import { mockPhotos } from '../data/mockPhotos';
 
@@ -19,6 +20,8 @@ type VersoContextValue = {
   intensity: number;
   compareMode: CompareMode;
   activePanel: EditorPanel;
+  importedPhotoUri: string | null;
+  importedPhotoName: string | null;
   favoriteFilterIndexes: number[];
   savedLooks: SavedLook[];
   proUnlocked: boolean;
@@ -30,6 +33,7 @@ type VersoContextValue = {
   setActivePanel: (panel: EditorPanel) => void;
   startEditingWithFilter: (index: number) => void;
   startEditingWithPhoto: (index: number) => void;
+  importRealPhoto: () => Promise<void>;
   toggleFavoriteFilter: (index: number) => void;
   saveCurrentLook: () => void;
   unlockProPreview: () => void;
@@ -42,6 +46,8 @@ const defaultValue: VersoContextValue = {
   intensity: 75,
   compareMode: 'after',
   activePanel: 'Filtros',
+  importedPhotoUri: null,
+  importedPhotoName: null,
   favoriteFilterIndexes: [0, 5],
   savedLooks: [],
   proUnlocked: false,
@@ -53,6 +59,7 @@ const defaultValue: VersoContextValue = {
   setActivePanel: () => {},
   startEditingWithFilter: () => {},
   startEditingWithPhoto: () => {},
+  importRealPhoto: async () => {},
   toggleFavoriteFilter: () => {},
   saveCurrentLook: () => {},
   unlockProPreview: () => {},
@@ -67,6 +74,8 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
   const [intensity, setIntensity] = useState(75);
   const [compareMode, setCompareMode] = useState<CompareMode>('after');
   const [activePanel, setActivePanel] = useState<EditorPanel>('Filtros');
+  const [importedPhotoUri, setImportedPhotoUri] = useState<string | null>(null);
+  const [importedPhotoName, setImportedPhotoName] = useState<string | null>(null);
   const [favoriteFilterIndexes, setFavoriteFilterIndexes] = useState<number[]>([0, 5]);
   const [savedLooks, setSavedLooks] = useState<SavedLook[]>([]);
   const [proUnlocked, setProUnlocked] = useState(false);
@@ -80,6 +89,8 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         intensity,
         compareMode,
         activePanel,
+        importedPhotoUri,
+        importedPhotoName,
         favoriteFilterIndexes,
         savedLooks,
         proUnlocked,
@@ -98,6 +109,8 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         setSelectedPhotoIndex: (index) => {
           if (mockPhotos[index]) {
             setSelectedPhotoIndex(index);
+            setImportedPhotoUri(null);
+            setImportedPhotoName(null);
             setCompareMode('after');
           }
         },
@@ -114,9 +127,35 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         startEditingWithPhoto: (index) => {
           if (mockPhotos[index]) {
             setSelectedPhotoIndex(index);
+            setImportedPhotoUri(null);
+            setImportedPhotoName(null);
             setCompareMode('after');
             setActivePanel('Filtros');
           }
+        },
+        importRealPhoto: async () => {
+          const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+          if (!permission.granted) {
+            return;
+          }
+
+          const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: false,
+            quality: 1,
+          });
+
+          if (result.canceled || !result.assets?.length) {
+            return;
+          }
+
+          const asset = result.assets[0];
+
+          setImportedPhotoUri(asset.uri);
+          setImportedPhotoName(asset.fileName ?? 'Foto importada');
+          setCompareMode('after');
+          setActivePanel('Filtros');
         },
         toggleFavoriteFilter: (index) => {
           if (!filters[index]) {
@@ -133,12 +172,12 @@ export function VersoProvider({ children }: { children: JSX.Element }) {
         saveCurrentLook: () => {
           const currentFilter = filters[selectedFilterIndex];
           const currentStyleExtra = styleExtras[selectedStyleExtraIndex];
-          const currentPhoto = mockPhotos[selectedPhotoIndex];
+          const currentPhotoName = importedPhotoName ?? mockPhotos[selectedPhotoIndex].name;
 
           setSavedLooks([
             {
               id: `${Date.now()}`,
-              photoName: currentPhoto.name,
+              photoName: currentPhotoName,
               filterName: currentFilter.name,
               styleExtraName: currentStyleExtra.name,
               intensity,

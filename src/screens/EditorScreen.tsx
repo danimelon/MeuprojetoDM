@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useMemo } from 'react';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { ScreenHeader } from '../components/ScreenHeader';
@@ -28,6 +28,9 @@ export function EditorScreen({ onOpenPremium }: EditorScreenProps) {
     setCompareMode,
     activePanel,
     setActivePanel,
+    importedPhotoUri,
+    importedPhotoName,
+    importRealPhoto,
     favoriteFilterIndexes,
     toggleFavoriteFilter,
     savedLooks,
@@ -61,6 +64,15 @@ export function EditorScreen({ onOpenPremium }: EditorScreenProps) {
           <Text style={styles.editorAction}>Exportar</Text>
         </View>
 
+        <View style={styles.realPhotoRow}>
+          <Text style={styles.realPhotoLabel}>
+            {importedPhotoName ? `Foto real: ${importedPhotoName}` : 'Usando foto mock no momento'}
+          </Text>
+          <TouchableOpacity activeOpacity={0.85} onPress={importRealPhoto} style={styles.realPhotoButton}>
+            <Text style={styles.realPhotoButtonText}>{importedPhotoUri ? 'Trocar imagem' : 'Importar imagem'}</Text>
+          </TouchableOpacity>
+        </View>
+
         <SectionTitle title="Foto base" action={selectedPhoto.mood} />
         <View style={styles.photoPickerRow}>
           {mockPhotos.map((photo, index) => (
@@ -82,10 +94,16 @@ export function EditorScreen({ onOpenPremium }: EditorScreenProps) {
 
         <View style={styles.photoFrame}>
           <View style={styles.photoMat}>
-            <View style={[styles.photoPreview, { backgroundColor: previewPalette.background }]}>
-              <View style={[styles.photoGlow, { backgroundColor: previewPalette.glow }]} />
-              <View style={[styles.photoAccent, { backgroundColor: previewPalette.accent }]} />
-            </View>
+            {importedPhotoUri ? (
+              <View style={[styles.photoPreview, styles.photoPreviewImported]}>
+                <Image source={{ uri: importedPhotoUri }} style={styles.importedPhotoImage} />
+              </View>
+            ) : (
+              <View style={[styles.photoPreview, { backgroundColor: previewPalette.background }]}>
+                <View style={[styles.photoGlow, { backgroundColor: previewPalette.glow }]} />
+                <View style={[styles.photoAccent, { backgroundColor: previewPalette.accent }]} />
+              </View>
+            )}
           </View>
           <View style={styles.frameBadge}>
             <Text style={styles.frameBadgeText}>{previewPalette.badge}</Text>
@@ -262,6 +280,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  realPhotoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  realPhotoLabel: {
+    flex: 1,
+    color: colors.mutedText,
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  realPhotoButton: {
+    paddingHorizontal: spacing.md,
+    paddingVertical: 10,
+    borderRadius: radii.round,
+    backgroundColor: colors.accentMuted,
+  },
+  realPhotoButtonText: {
+    color: colors.accent,
+    fontSize: 12,
+    fontWeight: '700',
+  },
   photoPickerRow: {
     flexDirection: 'row',
     gap: spacing.sm,
@@ -329,6 +370,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#B49476',
     justifyContent: 'space-between',
     padding: spacing.lg,
+  },
+  photoPreviewImported: {
+    padding: 0,
+    backgroundColor: colors.card,
+  },
+  importedPhotoImage: {
+    width: '100%',
+    minHeight: 280,
   },
   photoGlow: {
     alignSelf: 'flex-end',

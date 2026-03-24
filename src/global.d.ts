@@ -13,12 +13,24 @@ declare module 'expo-status-bar' {
 }
 
 declare module 'react-native' {
+  export const Image: any;
   export const SafeAreaView: any;
   export const ScrollView: any;
   export const StyleSheet: { create: <T>(styles: T) => T };
   export const Text: any;
   export const TouchableOpacity: any;
   export const View: any;
+}
+
+declare module 'expo-image-picker' {
+  export function requestMediaLibraryPermissionsAsync(): Promise<{ granted: boolean }>;
+  export function launchImageLibraryAsync(options?: Record<string, unknown>): Promise<{
+    canceled: boolean;
+    assets?: Array<{ uri: string; fileName?: string | null }>;
+  }>;
+  export const MediaTypeOptions: {
+    Images: string;
+  };
 }
 
 declare module 'react/jsx-runtime' {

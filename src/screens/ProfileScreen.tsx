@@ -18,6 +18,7 @@ export function ProfileScreen() {
     selectedStyleExtraIndex,
     selectedPhotoIndex,
     intensity,
+    importedPhotoName,
     favoriteFilterIndexes,
     savedLooks,
     proUnlocked,
@@ -40,6 +41,7 @@ export function ProfileScreen() {
       <View style={styles.sessionCard}>
         <Text style={styles.sessionTitle}>Sessão atual</Text>
         <Text style={styles.sessionCopy}>Foto: {currentPhoto.name}</Text>
+        <Text style={styles.sessionCopy}>Imagem real: {importedPhotoName ?? 'ainda não importada'}</Text>
         <Text style={styles.sessionCopy}>Filtro: {currentFilter.name}</Text>
         <Text style={styles.sessionCopy}>Toque extra: {currentStyleExtra.name}</Text>
         <Text style={styles.sessionCopy}>Intensidade: {intensity}%</Text>
